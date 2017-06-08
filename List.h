@@ -24,7 +24,12 @@ class List  {
 private:	
 
 // We must complete this section
-	int careCards[];
+	const int NUMBER_OF_DIGITS = 10;
+	Patient* ptrArr[NUMBER_OF_DIGITS];
+	Patient cardArr[];
+
+
+
 	int elementCount;
 
    

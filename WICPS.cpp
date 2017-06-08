@@ -11,8 +11,8 @@
  */
 #include <iostream>
 #include <sstream>
-#include "Patient.cpp"
-#include "List.cpp"
+#include "Patient.h"
+#include "List.h"
 using namespace std;
 
 void runRegistry();
