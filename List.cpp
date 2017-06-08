@@ -1,4 +1,4 @@
-//List.cpp
+//List.cpp Hey Guys it's me 
 
 	int List::getElementCount() const{
 		return elementCount;
