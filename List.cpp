@@ -20,7 +20,75 @@ int List::getElementCount() const{
 // Precondition: newElement must not already be in data collection.  
 // Postcondition: newElement inserted and the appropriate elementCount has been incremented.	
 bool List::insert(const Patient& newElement){
+	const int FIRST_CHARACTER = 0;
+	careCard = newElement.getCareCard();
+	firstChar = careCard[firstCharacter];
 
+	const ASCII_ZERO = 48;
+	int firstDigit = firstChar - ASCII_ZERO;
+
+	int digitArrCount = 0;
+	int* digitArrSize;
+	switch(firstDigit){
+		case DIGIT_ZERO:
+			digitArrCount = elementCountZero;
+			digitArrSize = &arrZeroSize;
+			arrZeroCount++;
+		case DIGIT_ONE:
+			digitArrCount = elementCountOne;
+			digitArrSize = &arrOneSize;
+			arrOneCount++;
+		case DIGIT_TWO:
+			digitArrCount = elementCountTwo;
+			digitArrSize = &arrTwoSize;
+			arrTwoCount++;
+		case DIGIT_THREE:
+			digitArrCount = elementCountThree;
+			digitArrSize = &arrThreeSize;
+			arrThreeCount++;
+		case DIGIT_FOUR:
+			digitArrCount = elementCountFour;
+			digitArrSize = &arrFourSize;
+			arrFourCount++;
+		case DIGIT_FIVE:
+			digitArrCount = elementCountFive;
+			digitArrSize = &arrFiveSize;
+			arrFiveCount++;
+		case DIGIT_SIX:
+			digitArrCount = elementCountSix;
+			digitArrSize = &arrSixSize;
+			arrSixCount++;
+		case DIGIT_SEVEN:
+			digitArrCount = elementCountSeven;
+			digitArrSize = &arrSevenSize;
+			arrSevenCount++;
+		case DIGIT_EIGHT:
+			digitArrCount = elementCountEight;
+			digitArrSize = &arrEightSize;
+			arrEightCount++;
+		case DIGIT_NINE:
+			digitArrCount = elementCountNine;
+			digitArrSize = &arrNineSize;
+			arrNineCount++;
+	}
+
+	if(digitArrCount < digitArrSize){ //If there's still space left in the array
+		patientArr[firstDigit][digitArrCount + 1] = newElement; //Place the element in the next space
+		return true;
+	} else { //If the array is full
+		const int DOUBLE_SIZE = 2;
+		Patient newArr = new Patient[&digitArrSize * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
+
+		for(int i = 0; i < digitArrCount; ++i){
+			newArr[i] = patientArr[firstDigit][i];
+		}
+
+		newArr[digitArrCount + 1] = newElement;
+		return true;
+	}
+
+
+	return false;
 }
 
 // Description: Remove an element. 
