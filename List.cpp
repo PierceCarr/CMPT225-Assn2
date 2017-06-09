@@ -49,8 +49,38 @@ void List::removeAll(){
 Patient* List::search(const Patient& target){
 	string card = target.getCareCard();
 	int cardNumber;
-	istringstream(n) >> i;
-	int i2 = 
+	istringstream(card) >> cardNumber;
+	int cardNumberFirstDigit = cardNumber[0];
+	int size;
+	switch(cardNumberFirstDigit){
+		case  DIGIT_ZERO;
+			size = arrZeroSize;
+		case  DIGIT_ONE;
+			size = arrOneSize
+		case  DIGIT_TWO;
+			size = arrTwoSize;
+		case  DIGIT_THREE;
+			size = arrThreeSize;
+		case  DIGIT_FOUR;
+			size = arrFourSize;
+		case  DIGIT_FIVE;
+			size = arrFiveSize;
+		case  DIGIT_SIX;
+			size = arrSixSize;
+		case  DIGIT_SEVEN;
+			size = arrSevenSize;
+		case  DIGIT_EIGHT;
+			size = arrEightSize
+		case  DIGIT_NINE;
+			size = arrNineSize
+	}
+	int i = 0; 
+	for(i = 0; i < size; ++i){
+		if(patientArr[cardNumberFirstDigit][i] == target){
+			return &patientArr[cardNumberFirstDigit][i];
+		}
+	}	
+	return NULL;
 }
 
 // Description: Prints all n elements stored in List in sort order and does so in O(n).
