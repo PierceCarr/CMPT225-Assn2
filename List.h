@@ -23,12 +23,45 @@ class List  {
 
 private:	
 // We must complete this section
-	Patient* patientArr[];
+	Patient* patientArr[][];
 
-	int arrSize;
+	const int NUMBER_OF_DIGITS = 10;
+	const int DIGIT_ZERO = 0;
+	const int DIGIT_ONE = 1;
+	const int DIGIT_TWO = 2;
+	const int DIGIT_THREE = 3;
 	int elementCount;
 
-   
+	int arrZeroSize;
+	int elementCountZero;
+
+	int arrOneSize;
+	int elementCountOne;
+
+	int arrTwoSize;
+	int elementCountTwo;
+
+	int arrThreeSize;
+	int elementCountThree;
+
+	int arrFourSize;
+	int elementCountFour;
+
+	int arrFiveSize;
+	int elementCountFive;
+
+	int arrSixSize;
+	int elementCountSix;
+
+	int arrSevenSize;
+	int elementCountSeven;
+
+	int arrEightSize;
+	int elementCountEight;
+
+	int arrNineSize;
+	int elementCountNine;
+ 
 public:
 
 // We must add at least 1 constructor and a destructor
@@ -38,8 +71,11 @@ public:
 		const int DEFAULT_ARRAY_SIZE = 8;
 		const int EMPTY = 0;
 
-		patientArr = new Patient[DEFAULT_ARRAY_SIZE];
-		arrSize = DEFAULT_ARRAY_SIZE;
+		patientArr = new Patient[NUMBER_OF_DIGITS][];
+		arrSize = NUMBER_OF_DIGITS;
+
+		patientArr[]
+
 		elementCount = EMPTY;
 	};
 

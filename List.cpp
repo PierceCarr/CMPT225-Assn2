@@ -15,7 +15,9 @@ int List::getElementCount() const{
 //              If the insertion is successful, true is returned otherwise, false is returned.
 // Precondition: newElement must not already be in data collection.  
 // Postcondition: newElement inserted and the appropriate elementCount has been incremented.	
-bool List::insert(const Patient& newElement);
+bool List::insert(const Patient& newElement){
+
+}
 
 // Description: Remove an element. 
 //              If the removal is successful, true is returned otherwise, false is returned.
@@ -23,7 +25,20 @@ bool List::insert(const Patient& newElement);
 bool List::remove( const Patient& toBeRemoved );
 
 // Description: Remove all elements.
-void List::removeAll();
+void List::removeAll(){
+	const int EMPTY = 0;
+	elementCount = EMPTY;
+	elementCountZero = EMPTY;
+	elementCountOne = EMPTY;
+	elementCountTwo = EMPTY;
+	elementCountThree = EMPTY;
+	elementCountFour = EMPTY;
+	elementCountFive = EMPTY;
+	elementCountSix = EMPTY;
+	elementCountSeven = EMPTY;
+	elementCountEight = EMPTY;
+	elementCountNine = EMPTY;
+}
 
 // Description: Search for target element and returns a pointer to it if found,
 //              otherwise, returns NULL.
