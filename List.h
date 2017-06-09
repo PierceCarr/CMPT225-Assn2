@@ -23,9 +23,10 @@ class List  {
 
 private:	
 // We must complete this section
-	Patient* patientArr[];
-
 	const int NUMBER_OF_DIGITS = 10;
+	Patient* patientArr[10];
+
+	
 	const int DIGIT_ZERO = 0;
 	const int DIGIT_ONE = 1;
 	const int DIGIT_TWO = 2;
@@ -77,9 +78,6 @@ public:
 	List(){
 		const int DEFAULT_ARRAY_SIZE = 8;
 		const int EMPTY = 0;
-
-		patientArr = new Patient[NUMBER_OF_DIGITS];
-		arrSize = NUMBER_OF_DIGITS;
 
 		arrZeroSize = DEFAULT_ARRAY_SIZE;
 		elementCountZero = EMPTY;
