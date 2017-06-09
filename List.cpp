@@ -104,7 +104,7 @@ bool List::remove( const Patient& toBeRemoved ){
 		case  DIGIT_ZERO;
 			size = elementCountZero;
 		case  DIGIT_ONE;
-			size = elementCountOne
+			size = elementCountOne;
 		case  DIGIT_TWO;
 			size = elementCountTwo;
 		case  DIGIT_THREE;
@@ -185,7 +185,7 @@ Patient* List::search(const Patient& target){
 		case  DIGIT_ZERO;
 			size = elementCountZero;
 		case  DIGIT_ONE;
-			size = elementCountOne
+			size = elementCountOne;
 		case  DIGIT_TWO;
 			size = elementCountTwo;
 		case  DIGIT_THREE;
@@ -224,7 +224,7 @@ void List::printList(){
 		++currDigit;
 		switch(currDigit){
 			case  DIGIT_ONE;
-				size = elementCountOne
+				size = elementCountOne;
 			case  DIGIT_TWO;
 				size = elementCountTwo;
 			case  DIGIT_THREE;
