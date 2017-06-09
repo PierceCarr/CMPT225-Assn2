@@ -120,8 +120,6 @@ public:
 		for(int i = 0; i < NUMBER_OF_DIGITS; ++i){
 			delete[] patientArr[i];
 		}
-
-		delete[] patientArr;
 	}
 
 // *** Start of Public Interface ***

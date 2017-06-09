@@ -33,43 +33,43 @@ bool List::insert(const Patient& newElement){
 		case DIGIT_ZERO:
 			digitArrCount = elementCountZero;
 			digitArrSize = &arrZeroSize;
-			arrZeroCount++;
+			elementCountZero++;
 		case DIGIT_ONE:
 			digitArrCount = elementCountOne;
 			digitArrSize = &arrOneSize;
-			arrOneCount++;
+			elementCountOne++;
 		case DIGIT_TWO:
 			digitArrCount = elementCountTwo;
 			digitArrSize = &arrTwoSize;
-			arrTwoCount++;
+			elementCountTwo++;
 		case DIGIT_THREE:
 			digitArrCount = elementCountThree;
 			digitArrSize = &arrThreeSize;
-			arrThreeCount++;
+			elementCountThree++;
 		case DIGIT_FOUR:
 			digitArrCount = elementCountFour;
 			digitArrSize = &arrFourSize;
-			arrFourCount++;
+			elementCountFour++;
 		case DIGIT_FIVE:
 			digitArrCount = elementCountFive;
 			digitArrSize = &arrFiveSize;
-			arrFiveCount++;
+			elementCountFive++;
 		case DIGIT_SIX:
 			digitArrCount = elementCountSix;
 			digitArrSize = &arrSixSize;
-			arrSixCount++;
+			elementCountSix++;
 		case DIGIT_SEVEN:
 			digitArrCount = elementCountSeven;
 			digitArrSize = &arrSevenSize;
-			arrSevenCount++;
+			elementCountSeven++;
 		case DIGIT_EIGHT:
 			digitArrCount = elementCountEight;
 			digitArrSize = &arrEightSize;
-			arrEightCount++;
+			elementCountEight++;
 		case DIGIT_NINE:
 			digitArrCount = elementCountNine;
 			digitArrSize = &arrNineSize;
-			arrNineCount++;
+			elementCountNine++;
 	}
 
 	if(digitArrCount < digitArrSize){ //If there's still space left in the array
