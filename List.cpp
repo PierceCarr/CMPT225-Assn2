@@ -54,25 +54,25 @@ Patient* List::search(const Patient& target){
 	int size;
 	switch(cardNumberFirstDigit){
 		case  DIGIT_ZERO;
-			size = arrZeroSize;
+			size = elementCountZero;
 		case  DIGIT_ONE;
-			size = arrOneSize
+			size = elementCountOne
 		case  DIGIT_TWO;
-			size = arrTwoSize;
+			size = elementCountTwo;
 		case  DIGIT_THREE;
-			size = arrThreeSize;
+			size = elementCountThree;
 		case  DIGIT_FOUR;
-			size = arrFourSize;
+			size = elementCountFour;
 		case  DIGIT_FIVE;
-			size = arrFiveSize;
+			size = elementCountFive;
 		case  DIGIT_SIX;
-			size = arrSixSize;
+			size = elementCountSix;
 		case  DIGIT_SEVEN;
-			size = arrSevenSize;
+			size = elementCountSeven;
 		case  DIGIT_EIGHT;
-			size = arrEightSize
+			size = elementCountEight;
 		case  DIGIT_NINE;
-			size = arrNineSize
+			size = elementCountNine;
 	}
 	int i = 0; 
 	for(i = 0; i < size; ++i){
@@ -84,4 +84,34 @@ Patient* List::search(const Patient& target){
 }
 
 // Description: Prints all n elements stored in List in sort order and does so in O(n).
-void List::printList();
+void List::printList(){
+	int i = 0; 
+	int currDigit = 0;
+	int size = elementCountZero;
+	while(currDigit < 10){
+		for (i = 0; i< size; ++i){
+			patientArr[currDigit][i].printPatient();
+		}
+		++currDigit;
+		switch(currDigit){
+			case  DIGIT_ONE;
+				size = elementCountOne
+			case  DIGIT_TWO;
+				size = elementCountTwo;
+			case  DIGIT_THREE;
+				size = elementCountThree;
+			case  DIGIT_FOUR;
+				size = elementCountFour;
+			case  DIGIT_FIVE;
+				size = elementCountFive;
+			case  DIGIT_SIX;
+				size = elementCountSix;
+			case  DIGIT_SEVEN;
+				size = elementCountSeven;
+			case  DIGIT_EIGHT;
+				size = elementCountEight;
+			case  DIGIT_NINE;
+				size = elementCountNine;
+		}
+	}
+}	
