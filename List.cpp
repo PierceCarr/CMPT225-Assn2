@@ -2,11 +2,15 @@
 
 #pragma once
 #include "List.h"
+#include <sstream>
+
 using namespace std;
 
 
 int List::getElementCount() const{
-	return elementCount;
+	return elementCountZero + elementCountOne + elementCountTwo + elementCountThree + 
+	   elementCountFour + elementCountFive + elementCountSix + elementCountSeven + 
+	   elementCountEight + elementCountNine;
 }
 
 // Description: Insert an element.
@@ -42,7 +46,12 @@ void List::removeAll(){
 
 // Description: Search for target element and returns a pointer to it if found,
 //              otherwise, returns NULL.
-Patient* List::search(const Patient& target);
+Patient* List::search(const Patient& target){
+	string card = target.getCareCard();
+	int cardNumber;
+	istringstream(n) >> i;
+	int i2 = 
+}
 
 // Description: Prints all n elements stored in List in sort order and does so in O(n).
 void List::printList();

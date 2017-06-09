@@ -87,7 +87,8 @@ public:
 // Note: Public Interface must not be modified.
 
 	// Description: Returns the total element count currently stored in List.
-	int  getElementCount() const;
+	int  getElementCount() const{
+	}
 
 	// Description: Insert an element.
     //              When "this" List is full, its data structure is expanded to accommodate 
