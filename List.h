@@ -26,18 +26,6 @@ private:
 	const int NUMBER_OF_DIGITS = 10;
 	Patient* patientArr[10];
 
-	
-	const int DIGIT_ZERO = 0;
-	const int DIGIT_ONE = 1;
-	const int DIGIT_TWO = 2;
-	const int DIGIT_THREE = 3;
-	const int DIGIT_FOUR = 4;
-	const int DIGIT_FIVE = 5;
-	const int DIGIT_SIX = 6;
-	const int DIGIT_SEVEN = 7;
-	const int DIGIT_EIGHT = 8;
-	const int DIGIT_NINE = 9;
-
 	int elementCount;
 
 	int arrZeroSize;
@@ -126,8 +114,7 @@ public:
 // Note: Public Interface must not be modified.
 
 	// Description: Returns the total element count currently stored in List.
-	int  getElementCount() const{
-	}
+	int  getElementCount() const;
 
 	// Description: Insert an element.
     //              When "this" List is full, its data structure is expanded to accommodate 

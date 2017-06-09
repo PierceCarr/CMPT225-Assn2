@@ -21,14 +21,25 @@ int List::getElementCount() const{
 // Postcondition: newElement inserted and the appropriate elementCount has been incremented.	
 bool List::insert(const Patient& newElement){
 	const int FIRST_CHARACTER = 0;
-	careCard = newElement.getCareCard();
-	firstChar = careCard[firstCharacter];
+	string careCard = newElement.getCareCard();
+	char firstChar = careCard[FIRST_CHARACTER];
 
-	const ASCII_ZERO = 48;
+	const int ASCII_ZERO = 48;
 	int firstDigit = firstChar - ASCII_ZERO;
 
 	int digitArrCount = 0;
 	int* digitArrSize;
+
+	const int DIGIT_ZERO = 0;
+	const int DIGIT_ONE = 1;
+	const int DIGIT_TWO = 2;
+	const int DIGIT_THREE = 3;
+	const int DIGIT_FOUR = 4;
+	const int DIGIT_FIVE = 5;
+	const int DIGIT_SIX = 6;
+	const int DIGIT_SEVEN = 7;
+	const int DIGIT_EIGHT = 8;
+	const int DIGIT_NINE = 9;
 	switch(firstDigit){
 		case DIGIT_ZERO:
 			digitArrCount = elementCountZero;
@@ -72,18 +83,19 @@ bool List::insert(const Patient& newElement){
 			elementCountNine++;
 	}
 
-	if(digitArrCount < digitArrSize){ //If there's still space left in the array
+	if(digitArrCount < *digitArrSize){ //If there's still space left in the array
 		patientArr[firstDigit][digitArrCount + 1] = newElement; //Place the element in the next space
 		return true;
 	} else { //If the array is full
 		const int DOUBLE_SIZE = 2;
-		Patient newArr = new Patient[&digitArrSize * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
+		Patient* newArr = new Patient[*digitArrSize * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
 
 		for(int i = 0; i < digitArrCount; ++i){
 			newArr[i] = patientArr[firstDigit][i];
 		}
 
 		newArr[digitArrCount + 1] = newElement;
+		patientArr[firstDigit] = newArr;
 		return true;
 	}
 
@@ -96,10 +108,22 @@ bool List::insert(const Patient& newElement){
 // Postcondition: toBeRemoved is removed, the appropriate elementCount has been decremented.	
 bool List::remove( const Patient& toBeRemoved ){
 	string card = toBeRemoved.getCareCard();
-	int cardNumber;
-	istringstream(card) >> cardNumber;
-	int cardNumberFirstDigit = cardNumber[0];
+	int cardNumberFirstDigit;
+	const int ASCII_ZERO = 48;
+	char firstDigit = card[0];
+	cardNumberFirstDigit = firstDigit - ASCII_ZERO;
 	int size;
+
+	const int DIGIT_ZERO = 0;
+	const int DIGIT_ONE = 1;
+	const int DIGIT_TWO = 2;
+	const int DIGIT_THREE = 3;
+	const int DIGIT_FOUR = 4;
+	const int DIGIT_FIVE = 5;
+	const int DIGIT_SIX = 6;
+	const int DIGIT_SEVEN = 7;
+	const int DIGIT_EIGHT = 8;
+	const int DIGIT_NINE = 9;
 	switch(cardNumberFirstDigit){
 		case  DIGIT_ZERO:
 			size = elementCountZero;
@@ -130,6 +154,16 @@ bool List::remove( const Patient& toBeRemoved ){
 				patientArr[cardNumberFirstDigit][ii-1] = patientArr[cardNumberFirstDigit][ii];
 			}
 
+			const int DIGIT_ZERO = 0;
+			const int DIGIT_ONE = 1;
+			const int DIGIT_TWO = 2;
+			const int DIGIT_THREE = 3;
+			const int DIGIT_FOUR = 4;
+			const int DIGIT_FIVE = 5;
+			const int DIGIT_SIX = 6;
+			const int DIGIT_SEVEN = 7;
+			const int DIGIT_EIGHT = 8;
+			const int DIGIT_NINE = 9;
 			switch(cardNumberFirstDigit){
 				case  DIGIT_ZERO:
 					elementCountZero++;
@@ -151,10 +185,13 @@ bool List::remove( const Patient& toBeRemoved ){
 					elementCountEight++;
 				case  DIGIT_NINE:
 					elementCountNine++;
+			
+			}
 			return true;
 		}
-	}
 
+	}
+	return false;
 }
 
 // Description: Remove all elements.
@@ -177,10 +214,22 @@ void List::removeAll(){
 //              otherwise, returns NULL.
 Patient* List::search(const Patient& target){
 	string card = target.getCareCard();
-	int cardNumber;
-	istringstream(card) >> cardNumber;
-	int cardNumberFirstDigit = cardNumber[0];
+	int cardNumberFirstDigit;
+	const int ASCII_ZERO = 48;
+	char firstDigit = card[0];
+	cardNumberFirstDigit = firstDigit - ASCII_ZERO;
 	int size;
+
+	const int DIGIT_ZERO = 0;
+	const int DIGIT_ONE = 1;
+	const int DIGIT_TWO = 2;
+	const int DIGIT_THREE = 3;
+	const int DIGIT_FOUR = 4;
+	const int DIGIT_FIVE = 5;
+	const int DIGIT_SIX = 6;
+	const int DIGIT_SEVEN = 7;
+	const int DIGIT_EIGHT = 8;
+	const int DIGIT_NINE = 9;
 	switch(cardNumberFirstDigit){
 		case  DIGIT_ZERO:
 			size = elementCountZero;
@@ -222,6 +271,17 @@ void List::printList(){
 			patientArr[currDigit][i].printPatient();
 		}
 		++currDigit;
+
+		const int DIGIT_ZERO = 0;
+		const int DIGIT_ONE = 1;
+		const int DIGIT_TWO = 2;
+		const int DIGIT_THREE = 3;
+		const int DIGIT_FOUR = 4;
+		const int DIGIT_FIVE = 5;
+		const int DIGIT_SIX = 6;
+		const int DIGIT_SEVEN = 7;
+		const int DIGIT_EIGHT = 8;
+		const int DIGIT_NINE = 9;
 		switch(currDigit){
 			case  DIGIT_ONE:
 				size = elementCountOne;
