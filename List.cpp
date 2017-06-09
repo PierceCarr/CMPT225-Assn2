@@ -101,25 +101,25 @@ bool List::remove( const Patient& toBeRemoved ){
 	int cardNumberFirstDigit = cardNumber[0];
 	int size;
 	switch(cardNumberFirstDigit){
-		case  DIGIT_ZERO;
+		case  DIGIT_ZERO:
 			size = elementCountZero;
-		case  DIGIT_ONE;
+		case  DIGIT_ONE:
 			size = elementCountOne;
-		case  DIGIT_TWO;
+		case  DIGIT_TWO:
 			size = elementCountTwo;
-		case  DIGIT_THREE;
+		case  DIGIT_THREE:
 			size = elementCountThree;
-		case  DIGIT_FOUR;
+		case  DIGIT_FOUR:
 			size = elementCountFour;
-		case  DIGIT_FIVE;
+		case  DIGIT_FIVE:
 			size = elementCountFive;
-		case  DIGIT_SIX;
+		case  DIGIT_SIX:
 			size = elementCountSix;
-		case  DIGIT_SEVEN;
+		case  DIGIT_SEVEN:
 			size = elementCountSeven;
-		case  DIGIT_EIGHT;
+		case  DIGIT_EIGHT:
 			size = elementCountEight;
-		case  DIGIT_NINE;
+		case  DIGIT_NINE:
 			size = elementCountNine;
 	}
 	int i = 0; 
@@ -131,25 +131,25 @@ bool List::remove( const Patient& toBeRemoved ){
 			}
 
 			switch(cardNumberFirstDigit){
-				case  DIGIT_ZERO;
+				case  DIGIT_ZERO:
 					elementCountZero++;
-				case  DIGIT_ONE;
+				case  DIGIT_ONE:
 					elementCountOne++;
-				case  DIGIT_TWO;
+				case  DIGIT_TWO:
 					elementCountTwo++;
-				case  DIGIT_THREE;
+				case  DIGIT_THREE:
 					elementCountThree++;
-				case  DIGIT_FOUR;
+				case  DIGIT_FOUR:
 					elementCountFour++;
-				case  DIGIT_FIVE;
+				case  DIGIT_FIVE:
 					elementCountFive++;
-				case  DIGIT_SIX;
+				case  DIGIT_SIX:
 					elementCountSix++;
-				case  DIGIT_SEVEN;
+				case  DIGIT_SEVEN:
 					elementCountSeven++;
-				case  DIGIT_EIGHT;
+				case  DIGIT_EIGHT:
 					elementCountEight++;
-				case  DIGIT_NINE;
+				case  DIGIT_NINE:
 					elementCountNine++;
 			return true;
 		}
@@ -182,25 +182,25 @@ Patient* List::search(const Patient& target){
 	int cardNumberFirstDigit = cardNumber[0];
 	int size;
 	switch(cardNumberFirstDigit){
-		case  DIGIT_ZERO;
+		case  DIGIT_ZERO:
 			size = elementCountZero;
-		case  DIGIT_ONE;
+		case  DIGIT_ONE:
 			size = elementCountOne;
-		case  DIGIT_TWO;
+		case  DIGIT_TWO:
 			size = elementCountTwo;
-		case  DIGIT_THREE;
+		case  DIGIT_THREE:
 			size = elementCountThree;
-		case  DIGIT_FOUR;
+		case  DIGIT_FOUR:
 			size = elementCountFour;
-		case  DIGIT_FIVE;
+		case  DIGIT_FIVE:
 			size = elementCountFive;
-		case  DIGIT_SIX;
+		case  DIGIT_SIX:
 			size = elementCountSix;
-		case  DIGIT_SEVEN;
+		case  DIGIT_SEVEN:
 			size = elementCountSeven;
-		case  DIGIT_EIGHT;
+		case  DIGIT_EIGHT:
 			size = elementCountEight;
-		case  DIGIT_NINE;
+		case  DIGIT_NINE:
 			size = elementCountNine;
 	}
 	int i = 0; 
@@ -223,23 +223,23 @@ void List::printList(){
 		}
 		++currDigit;
 		switch(currDigit){
-			case  DIGIT_ONE;
+			case  DIGIT_ONE:
 				size = elementCountOne;
-			case  DIGIT_TWO;
+			case  DIGIT_TWO:
 				size = elementCountTwo;
-			case  DIGIT_THREE;
+			case  DIGIT_THREE:
 				size = elementCountThree;
-			case  DIGIT_FOUR;
+			case  DIGIT_FOUR:
 				size = elementCountFour;
-			case  DIGIT_FIVE;
+			case  DIGIT_FIVE:
 				size = elementCountFive;
-			case  DIGIT_SIX;
+			case  DIGIT_SIX:
 				size = elementCountSix;
-			case  DIGIT_SEVEN;
+			case  DIGIT_SEVEN:
 				size = elementCountSeven;
-			case  DIGIT_EIGHT;
+			case  DIGIT_EIGHT:
 				size = elementCountEight;
-			case  DIGIT_NINE;
+			case  DIGIT_NINE:
 				size = elementCountNine;
 		}
 	}
