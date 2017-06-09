@@ -22,14 +22,10 @@ using namespace std;
 class List  {
 
 private:	
-
 // We must complete this section
-	const int NUMBER_OF_DIGITS = 10;
-	Patient* ptrArr[NUMBER_OF_DIGITS];
-	Patient cardArr[];
+	Patient* patientArr[];
 
-
-
+	int arrSize;
 	int elementCount;
 
    
@@ -39,12 +35,17 @@ public:
 	
 	// Default constructor
 	List(){
-		const int DEFAULT_ARRAY_SIZE = 4;
+		const int DEFAULT_ARRAY_SIZE = 8;
+		const int EMPTY = 0;
 
-		int defaultSizedArray[DEFAULT_ARRAY_SIZE];
-		carecards = defaultSizedArray;
+		patientArr = new Patient[DEFAULT_ARRAY_SIZE];
 		arrSize = DEFAULT_ARRAY_SIZE;
+		elementCount = EMPTY;
 	};
+
+	~List(){
+		delete[] patientArr;
+	}
 
 // *** Start of Public Interface ***
 // Note: Public Interface must not be modified.
