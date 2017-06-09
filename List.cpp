@@ -26,7 +26,68 @@ bool List::insert(const Patient& newElement){
 // Description: Remove an element. 
 //              If the removal is successful, true is returned otherwise, false is returned.
 // Postcondition: toBeRemoved is removed, the appropriate elementCount has been decremented.	
-bool List::remove( const Patient& toBeRemoved );
+bool List::remove( const Patient& toBeRemoved ){
+	string card = toBeRemoved.getCareCard();
+	int cardNumber;
+	istringstream(card) >> cardNumber;
+	int cardNumberFirstDigit = cardNumber[0];
+	int size;
+	switch(cardNumberFirstDigit){
+		case  DIGIT_ZERO;
+			size = elementCountZero;
+		case  DIGIT_ONE;
+			size = elementCountOne
+		case  DIGIT_TWO;
+			size = elementCountTwo;
+		case  DIGIT_THREE;
+			size = elementCountThree;
+		case  DIGIT_FOUR;
+			size = elementCountFour;
+		case  DIGIT_FIVE;
+			size = elementCountFive;
+		case  DIGIT_SIX;
+			size = elementCountSix;
+		case  DIGIT_SEVEN;
+			size = elementCountSeven;
+		case  DIGIT_EIGHT;
+			size = elementCountEight;
+		case  DIGIT_NINE;
+			size = elementCountNine;
+	}
+	int i = 0; 
+	for(i = 0; i < size; ++i){
+		if(patientArr[cardNumberFirstDigit][i] == toBeRemoved){
+			
+			for(int ii = i+1; ii < size; ++ii){ 
+				patientArr[cardNumberFirstDigit][ii-1] = patientArr[cardNumberFirstDigit][ii];
+			}
+
+			switch(cardNumberFirstDigit){
+				case  DIGIT_ZERO;
+					elementCountZero++;
+				case  DIGIT_ONE;
+					elementCountOne++;
+				case  DIGIT_TWO;
+					elementCountTwo++;
+				case  DIGIT_THREE;
+					elementCountThree++;
+				case  DIGIT_FOUR;
+					elementCountFour++;
+				case  DIGIT_FIVE;
+					elementCountFive++;
+				case  DIGIT_SIX;
+					elementCountSix++;
+				case  DIGIT_SEVEN;
+					elementCountSeven++;
+				case  DIGIT_EIGHT;
+					elementCountEight++;
+				case  DIGIT_NINE;
+					elementCountNine++;
+			return true;
+		}
+	}
+
+}
 
 // Description: Remove all elements.
 void List::removeAll(){
