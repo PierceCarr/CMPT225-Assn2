@@ -8,9 +8,10 @@ using namespace std;
 
 
 int List::getElementCount() const{
-	return elementCountZero + elementCountOne + elementCountTwo + elementCountThree + 
-	   elementCountFour + elementCountFive + elementCountSix + elementCountSeven + 
-	   elementCountEight + elementCountNine;
+	return totalElementCount;
+	// return elementCountZero + elementCountOne + elementCountTwo + elementCountThree + 
+	//    elementCountFour + elementCountFive + elementCountSix + elementCountSeven + 
+	//    elementCountEight + elementCountNine;
 }
 
 // Description: Insert an element.
@@ -18,8 +19,32 @@ int List::getElementCount() const{
 //              a new element. This is done unbeknown to the client code.
 //              If the insertion is successful, true is returned otherwise, false is returned.
 // Precondition: newElement must not already be in data collection.  
-// Postcondition: newElement inserted and the appropriate elementCount has been incremented.	
-bool List::insert(const Patient& newElement){
+// Postcondition: newElement inserted and the appropriate elementCount has been incremented.
+
+/**
+	Insertion: When the receptionist add a new patient (for example, a new Patient with the care card 
+	number "7865432189") to WICPS, the system first needs to ascertain whether this Patient object is 
+	already in the List. This must be done in O(m), where m is the number of Patient objects with care 
+	card numbers starting with the same digit, for example, "7". Then insert( ) must verify whether the 
+	section of the data structure storing Patient objects with care card numbers starting with, for example, 
+	"7", is full (or not) and it must do so in O(1).
+
+	If it is full, it must first be expanded in a transparent fashion, i.e., unbeknown to the user. This 
+	is to say that the WICPS application (the client code) should not be aware of it. This expansion must 
+	be done in O(1) (amortized). This expansion must leave all the other sections, i.e., sections storing
+	Patient objects with care card numbers starting with other digits then, for example, "7", unaffected.
+	Once the expansion is done, the new Patient object is inserted into the newly expanded section of the
+	data structure. See next bullet item for more information about insertion.
+
+	If it is not full, it must insert this Patient object in O(m), where m is the number of Patient objects 
+	with care card numbers starting with the same digit, for example, "7", into this section of the data 
+	structure. As it is inserting this particular Patient object, it cannot access other sections of the data 
+	structure containing Patient objects with care card numbers starting with other digits then, for example, "7".
+
+**/	
+bool List::insert(const Patient& newElement){ //This is just a draft. I'm pretty certain the final two paragraphs of the above are not fullfilled.
+	bool result = NULL;
+
 	const int FIRST_CHARACTER = 0;
 	string careCard = newElement.getCareCard();
 	char firstChar = careCard[FIRST_CHARACTER];
@@ -27,80 +52,39 @@ bool List::insert(const Patient& newElement){
 	const int ASCII_ZERO = 48;
 	int firstDigit = firstChar - ASCII_ZERO;
 
-	int digitArrCount = 0;
-	int* digitArrSize;
-
-	const int DIGIT_ZERO = 0;
-	const int DIGIT_ONE = 1;
-	const int DIGIT_TWO = 2;
-	const int DIGIT_THREE = 3;
-	const int DIGIT_FOUR = 4;
-	const int DIGIT_FIVE = 5;
-	const int DIGIT_SIX = 6;
-	const int DIGIT_SEVEN = 7;
-	const int DIGIT_EIGHT = 8;
-	const int DIGIT_NINE = 9;
-	switch(firstDigit){
-		case DIGIT_ZERO:
-			digitArrCount = elementCountZero;
-			digitArrSize = &arrZeroSize;
-			elementCountZero++;
-		case DIGIT_ONE:
-			digitArrCount = elementCountOne;
-			digitArrSize = &arrOneSize;
-			elementCountOne++;
-		case DIGIT_TWO:
-			digitArrCount = elementCountTwo;
-			digitArrSize = &arrTwoSize;
-			elementCountTwo++;
-		case DIGIT_THREE:
-			digitArrCount = elementCountThree;
-			digitArrSize = &arrThreeSize;
-			elementCountThree++;
-		case DIGIT_FOUR:
-			digitArrCount = elementCountFour;
-			digitArrSize = &arrFourSize;
-			elementCountFour++;
-		case DIGIT_FIVE:
-			digitArrCount = elementCountFive;
-			digitArrSize = &arrFiveSize;
-			elementCountFive++;
-		case DIGIT_SIX:
-			digitArrCount = elementCountSix;
-			digitArrSize = &arrSixSize;
-			elementCountSix++;
-		case DIGIT_SEVEN:
-			digitArrCount = elementCountSeven;
-			digitArrSize = &arrSevenSize;
-			elementCountSeven++;
-		case DIGIT_EIGHT:
-			digitArrCount = elementCountEight;
-			digitArrSize = &arrEightSize;
-			elementCountEight++;
-		case DIGIT_NINE:
-			digitArrCount = elementCountNine;
-			digitArrSize = &arrNineSize;
-			elementCountNine++;
-	}
-
-	if(digitArrCount < *digitArrSize){ //If there's still space left in the array
-		patientArr[firstDigit][digitArrCount + 1] = newElement; //Place the element in the next space
-		return true;
-	} else { //If the array is full
-		const int DOUBLE_SIZE = 2;
-		Patient* newArr = new Patient[*digitArrSize * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
-
-		for(int i = 0; i < digitArrCount; ++i){
-			newArr[i] = patientArr[firstDigit][i];
+	//Check if already on list in O(m)
+	bool found = false;
+	for(int i = 0; i < arrSizes[firstDigit] && !found; ++i){
+		if(patientArr[firstDigit] == newElement){
+			result = false;
+			found = true;
 		}
+	}
+	//Check if full
 
-		newArr[digitArrCount + 1] = newElement;
-		patientArr[firstDigit] = newArr;
-		return true;
+	bool isFull = (arrCounts[firstDigit] == arrSizes[firstDigit]);
+
+	if(isFull && !found){//if full
+		const int DOUBLE_SIZE = 2;
+		int newCount = arrCounts[firstDigit] + 1;
+		Patient* expandedArr = Patient[arrSizes[firstDigit] * DOUBLE_SIZE]; 
+		for(int i = 0; i < arrCounts[firstDigit]; ++i){
+			expandedArr[i] = patientArr[firstDigit][i];
+		}
+		expandedArr[newCount] = newElement;
+		arrCounts[firstDigit] = newCount;
+		arrSizes[firstDigit] *= DOUBLE_SIZE;
+		result = true;
+	}else if(!found){//if space
+		int newCount = arrCounts[firstDigit] + 1;
+		patientArr[firstDigit][newCount] = newElement;
+		arrCounts[firstDigit] = newCount;
+		arrSizes[firstDigit]++;
+		result = true;
 	}
 
 
-	return false;
+	return result;
 }
 
 // Description: Remove an element. 
@@ -212,6 +196,14 @@ void List::removeAll(){
 
 // Description: Search for target element and returns a pointer to it if found,
 //              otherwise, returns NULL.
+
+/**
+	Searching: The search( ) must perform in O(x), where x is the number of Patient objects with care card numbers starting with the 
+	same digit as the starting digit of the care card number of the target Patient object. For example, if the receptionist wishes 
+	to search for a Patient object with the care card number "6754322189", the search must performed in O(p) where p is the number 
+	Patient objects with care card numbers starting with "6", where p ≤ n. This signifies that the only section of the data structure 
+	that is searched is the section containing Patient objects with care card numbers starting with "6".
+**/
 Patient* List::search(const Patient& target){
 	string card = target.getCareCard();
 	int cardNumberFirstDigit;
