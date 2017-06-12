@@ -23,40 +23,10 @@ class List  {
 
 private:	
 // We must complete this section
-	const int NUMBER_OF_DIGITS = 10;
+	static const int NUMBER_OF_DIGITS = 10;
 	Patient* patientArr[10];
-
-	int elementCount;
-
-	int arrZeroSize;
-	int elementCountZero;
-
-	int arrOneSize;
-	int elementCountOne;
-
-	int arrTwoSize;
-	int elementCountTwo;
-
-	int arrThreeSize;
-	int elementCountThree;
-
-	int arrFourSize;
-	int elementCountFour;
-
-	int arrFiveSize;
-	int elementCountFive;
-
-	int arrSixSize;
-	int elementCountSix;
-
-	int arrSevenSize;
-	int elementCountSeven;
-
-	int arrEightSize;
-	int elementCountEight;
-
-	int arrNineSize;
-	int elementCountNine;
+	int sizes[10];
+	int elements[10];
  
 public:
 
@@ -67,41 +37,11 @@ public:
 		const int DEFAULT_ARRAY_SIZE = 8;
 		const int EMPTY = 0;
 
-		arrZeroSize = DEFAULT_ARRAY_SIZE;
-		elementCountZero = EMPTY;
-
-		arrOneSize = DEFAULT_ARRAY_SIZE;
-		elementCountOne = EMPTY;
-
-		arrTwoSize = DEFAULT_ARRAY_SIZE;
-		elementCountTwo = EMPTY;
-
-		arrThreeSize = DEFAULT_ARRAY_SIZE;
-		elementCountThree = EMPTY;
-
-		arrFourSize = DEFAULT_ARRAY_SIZE;
-		elementCountFour = EMPTY;
-
-		arrFiveSize = DEFAULT_ARRAY_SIZE;
-		elementCountFive = EMPTY;
-
-		arrSixSize = DEFAULT_ARRAY_SIZE;
-		elementCountSix = EMPTY;
-
-		arrSevenSize = DEFAULT_ARRAY_SIZE;
-		elementCountSeven = EMPTY;
-
-		arrEightSize = DEFAULT_ARRAY_SIZE;
-		elementCountEight = EMPTY;
-
-		arrNineSize = DEFAULT_ARRAY_SIZE;
-		elementCountNine = EMPTY;
-
 		for(int i = 0; i < NUMBER_OF_DIGITS; ++i){
+			sizes[i] = DEFAULT_ARRAY_SIZE;
 			patientArr[i] = new Patient[DEFAULT_ARRAY_SIZE];
+			elements[i] = EMPTY;
 		}
-
-		elementCount = EMPTY;
 	};
 
 	~List(){
