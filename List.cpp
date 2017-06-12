@@ -18,7 +18,8 @@ Bug List:
 
 int List::getElementCount() const{
 	int sum = 0 ; 
-	for(int i = 0; i < 10; i++){
+	const int NUMBER_OF_DIGITS = 10;
+	for(int i = 0; i < NUMBER_OF_DIGITS; i++){
 		sum+=elements[i];
 	}
 	return sum;
@@ -31,31 +32,35 @@ int List::getElementCount() const{
 // Precondition: newElement must not already be in data collection.  
 // Postcondition: newElement inserted and the appropriate elementCount has been incremented.	
 bool List::insert(const Patient& newElement){
-	const int FIRST_CHARACTER = 0;
 	string careCard = newElement.getCareCard();
+	const int FIRST_CHARACTER = 0;
 	char firstChar = careCard[FIRST_CHARACTER];
 
 	const int ASCII_ZERO = 48;
 	int firstDigit = firstChar - ASCII_ZERO;
 
-	elements[firstDigit]+=1;
-	cout << "The array for the number " << firstDigit << " now has " << elements[firstDigit] << " elements"<< endl; 
+	// elements[firstDigit]+=1; //We haven't added the element yet or decided whether it already exists, so why increase now?
+	// cout << "The array for the number " << firstDigit << " now has " << elements[firstDigit] << " elements"<< endl; 
 
-
+	//Check to see if element already exists in registry
 	bool lastEl = true;
 	int i = 0;
-	for(i=0;i<elements[firstDigit]-1; i++){
+	for(i = 0; i < elements[firstDigit]; i++){
 		if(patientArr[firstDigit][i] == newElement){
 			cout << "Element already exists, you FOOL!" << endl; 
 			return false;
 		}
-		if(patientArr[firstDigit][i] > newElement){
+		if(patientArr[firstDigit][i] > newElement){ // Isn't this comparing strings?? What does that do? Seems to work in ideone though.
 			lastEl = false;
 			break;
 		}
 	}
 
-	if(elements[firstDigit]>sizes[firstDigit]){
+	//Check to see if more space is needed in element's digit array
+
+	elements[firstDigit]+=1; //We're adding it at this point
+
+	if(elements[firstDigit] >= sizes[firstDigit]){ //Changed > to >=, because there is no room in an equal sized array either
 
 		const int DOUBLE_SIZE = 2;
 		Patient* newArr = new Patient[sizes[firstDigit] * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
@@ -72,6 +77,7 @@ bool List::insert(const Patient& newElement){
 			for(j = j; j<elements[firstDigit]; j++){
 				newArr[j] = patientArr[firstDigit][j-1];
 			}
+			delete[] patientArr[firstDigit]; //Added this
 			patientArr[firstDigit] = newArr;
 			return true;
 		}	
@@ -80,6 +86,7 @@ bool List::insert(const Patient& newElement){
 			for(int q = 0; q < elements[firstDigit]-1; q++){
 				newArr[q] = patientArr[firstDigit][q];
 			}
+			delete[] patientArr[firstDigit]; //Added this
 			patientArr[firstDigit] = newArr;
 		}
 		//newArr[digitArrCount + 1] = newElement;
