@@ -7,6 +7,14 @@
 
 using namespace std;
 
+/**
+Bug List:
+-Spaghetti errors when I try to 'display registered patients' and patients exist in registry.
+-When I search for a patient that exists, spaghetti is outputted before patient is correctly displayed.
+-Spaghetti before a patient is correctly removed.
+-Spaghetti before program correctly exits.
+**/
+
 
 int List::getElementCount() const{
 	int sum = 0 ; 
@@ -127,7 +135,8 @@ bool List::remove( const Patient& toBeRemoved ){
 // Description: Remove all elements.
 void List::removeAll(){
 	const int EMPTY = 0;
-	for(int i = 0 ; i < 10 ; i ++){
+	const int NUMBER_OF_DIGITS = 10;
+	for(int i = 0 ; i < NUMBER_OF_DIGITS ; i ++){
 		elements[i] = EMPTY;
 	}
 }
