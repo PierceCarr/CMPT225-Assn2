@@ -23,10 +23,11 @@ class List  {
 
 private:	
 // We must complete this section
-	static const int NUMBER_OF_DIGITS = 10;
-	Patient* patientArr[10];
-	int sizes[10];
-	int elements[10];
+	const int NUMBER_OF_DIGITS = 10;
+	Patient* patientArr[10]; //Ten digits
+	int sizes[10]; //Ten digits
+	int elements[10]; //Ten digits
+	int totalElementCount; //Must return in O(1), so we must count the total as we input
  
 public:
 
