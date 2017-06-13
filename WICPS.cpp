@@ -6,7 +6,7 @@
  * 
  * Class Invariant: Operators and getters do not affect the Patient objects.
  *
- * Last modified on: May 2017
+ * Last modified on: June 2017
  * Authors: Sina Khalili and Pierce Carruthers
  */
 #include <iostream>

@@ -1,4 +1,16 @@
-//List.cpp Hey Guys it's me 
+/*
+ * List.cpp 
+ * 
+ * Class Description: A value-oriented List data collection ADT.
+ * Class Invariant: Data collection with the following characteristics:
+ *                   - Each element is unique (no duplicates).
+ *                   - It is sorted by ascending sort order of its elements.
+ *                   - Its data structure is expandable: when full, it expands to accommodate 
+ *                     new insertion. This is done unbeknown to the client code.
+ *
+ * Last modified on: June 2017
+ * Author: Pierce Carruthers And Sina Khalili
+ */
 
 //#pragma once
 #include "List.h"
@@ -7,13 +19,6 @@
 
 using namespace std;
 
-/**
-Bug List:
--Spaghetti errors when I try to 'display registered patients' and patients exist in registry.
--When I search for a patient that exists, spaghetti is outputted before patient is correctly displayed.
--Spaghetti before a patient is correctly removed.
--Spaghetti before program correctly exits.
-**/
 
 
 int List::getElementCount() const{
@@ -47,11 +52,11 @@ bool List::insert(const Patient& newElement){
 	int i = 0;
 	for(i = 0; i < elements[firstDigit]; i++){
 		if(patientArr[firstDigit][i] == newElement){
-			cout << "Element already exists, you FOOL!" << endl; 
+			cout << "Patient already exists, you FOOL!" << endl; 
 			return false;
 		}
 		if(patientArr[firstDigit][i] > newElement){ // Isn't this comparing strings?? What does that do? Seems to work in ideone though.
-			cout << "Caught at index " << i << endl; 
+			//cout << "Caught at index " << i << endl; 
 			lastEl = false;
 			break;
 		}
@@ -63,11 +68,11 @@ bool List::insert(const Patient& newElement){
 
 	if(elements[firstDigit] > sizes[firstDigit]){ //Changed > to >=, because there is no room in an equal sized array either
 
-		cout << "I now will try to create a new array" << endl;
+		//cout << "I now will try to create a new array" << endl;
 		const int DOUBLE_SIZE = 2;
 		Patient* newArr = new Patient[sizes[firstDigit] * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
 		sizes[firstDigit]*=2;
-		cout << "I have made a new array of the size " << sizes[firstDigit] << endl;
+		//cout << "I have made a new array of the size " << sizes[firstDigit] << endl;
 
 		if(!lastEl){
 			int j = 0;
@@ -97,7 +102,7 @@ bool List::insert(const Patient& newElement){
 	}
 	
 	if(lastEl){
-		cout << "I made it this far" << endl; 
+		//cout << "I made it this far" << endl; 
 		patientArr[firstDigit][elements[firstDigit]-1]= newElement;
 		return true; 
 	}
@@ -161,7 +166,7 @@ Patient* List::search(const Patient& target){
 	char firstDigit = card[0];
 	cardNumberFirstDigit = firstDigit - ASCII_ZERO;
 
-	cout << "now searching array " << cardNumberFirstDigit << endl;
+	//cout << "now searching array " << cardNumberFirstDigit << endl;
 	int i = 0; 
 	for(i = 0; i < elements[cardNumberFirstDigit]; ++i){
 			/*cout << "comparing " << patientArr[cardNumberFirstDigit][i].getCareCard() << 
@@ -177,13 +182,14 @@ Patient* List::search(const Patient& target){
 void List::printList(){
 	int i = 0; 
 	int currDigit = 0;
+	const int NUMBER_OF_DIGITS = 10;
 	//int size = elementCountZero;
 	if(this->getElementCount() == 0){
 		cout << "There are no patients! What kind of a clinic are you running here?" << endl; 
 		return;
 	}
 	//patientArr[currDigit][9].printPatient();
-	while(currDigit < 10){
+	while(currDigit < NUMBER_OF_DIGITS){
 		for (i = 0; i< elements[currDigit]; ++i){
 			patientArr[currDigit][i].printPatient();
 		}
