@@ -51,6 +51,7 @@ bool List::insert(const Patient& newElement){
 			return false;
 		}
 		if(patientArr[firstDigit][i] > newElement){ // Isn't this comparing strings?? What does that do? Seems to work in ideone though.
+			cout << "Caught at index " << i << endl; 
 			lastEl = false;
 			break;
 		}
@@ -60,11 +61,14 @@ bool List::insert(const Patient& newElement){
 
 	elements[firstDigit]+=1; //We're adding it at this point
 
-	if(elements[firstDigit] >= sizes[firstDigit]){ //Changed > to >=, because there is no room in an equal sized array either
+	if(elements[firstDigit] > sizes[firstDigit]){ //Changed > to >=, because there is no room in an equal sized array either
 
+		cout << "I now will try to create a new array" << endl;
 		const int DOUBLE_SIZE = 2;
 		Patient* newArr = new Patient[sizes[firstDigit] * DOUBLE_SIZE]; //IF THERE'S A SEGFAULT BUG, IT ORIGINATES HERE
-		
+		sizes[firstDigit]*=2;
+		cout << "I have made a new array of the size " << sizes[firstDigit] << endl;
+
 		if(!lastEl){
 			int j = 0;
 			for( j = 0; j < i; j++){
@@ -176,7 +180,9 @@ void List::printList(){
 	//int size = elementCountZero;
 	if(this->getElementCount() == 0){
 		cout << "There are no patients! What kind of a clinic are you running here?" << endl; 
+		return;
 	}
+	//patientArr[currDigit][9].printPatient();
 	while(currDigit < 10){
 		for (i = 0; i< elements[currDigit]; ++i){
 			patientArr[currDigit][i].printPatient();

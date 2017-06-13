@@ -35,7 +35,7 @@ public:
 	
 	// Default constructor
 	List(){
-		const int DEFAULT_ARRAY_SIZE = 8;
+		const int DEFAULT_ARRAY_SIZE = 1;
 		const int EMPTY = 0;
 
 		for(int i = 0; i < NUMBER_OF_DIGITS; ++i){

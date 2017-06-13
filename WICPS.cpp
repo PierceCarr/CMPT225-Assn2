@@ -19,7 +19,7 @@ void runRegistry();
 int getChoice(int numberOfOptions);
 bool doMainOption(int userChoice, List& registry);
 void displayMainOptions();
-void displayPatients(List registry);
+//void displayPatients(List registry);
 void enterPatient(List& registry);
 void editPatient(Patient& patient);
 void displayEditOptions();
@@ -181,7 +181,8 @@ bool doMainOption(int userChoice, List& registry){
 			displayMainOptions();
 			return true;
 		case DISPLAY_PATIENTS:
-			displayPatients(registry);
+			//displayPatients(registry);
+			registry.printList(); 
 			return true;
 		case ENTER_PATIENT:
 			enterPatient(registry);
@@ -209,9 +210,9 @@ bool doMainOption(int userChoice, List& registry){
 	return false;
 }
 
-void displayPatients(List registry){
-	registry.printList();
-}
+/*void displayPatients(List registry){
+	registry.print();
+}*/
 
 void enterPatient(List& registry){
 
